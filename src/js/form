@@ -1,0 +1,52 @@
+import imageMic from '../pic/micriphon.png';
+import imageCam from '../pic/camera.png';
+import GeoBefinition from '../js/geobefinition';
+// import ViewMessage from '../js/viewmessage'
+
+export default class Form {
+  constructor(container) {
+    if (!(container instanceof HTMLElement)) {
+      throw new Error('This is not HTML element!');
+    }
+
+    this.container = container;
+  }
+
+  renderForm() {
+    let div = document.createElement('div');
+    const formConainer = this.container.appendChild(div);
+    formConainer.classList.add('form-cotauner');
+
+    const form = document.createElement('form');
+    const inputForm = formConainer.appendChild(form);
+    inputForm.classList.add('form');
+
+    const textarea = document.createElement('textarea');
+    const input = inputForm.appendChild(textarea);
+    input.setAttribute('rows', '2');
+    input.setAttribute('name', 'name');
+    input.required = true;
+    input.classList.add('input-form');
+
+    const button = document.createElement('button');
+    const buttonSubmit = inputForm.appendChild(button);
+    buttonSubmit.setAttribute('type', 'submit');
+    buttonSubmit.textContent = 'ОК';
+
+    let img = document.createElement('img');
+    const microphone = formConainer.appendChild(img);
+    img.src = imageMic;
+    microphone.classList.add('microphone');
+    
+    img = document.createElement('img');
+    const camera = formConainer.appendChild(img);
+    img.src = imageCam;
+    camera.classList.add('camera');
+
+    inputForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const geo = new GeoBefinition();
+      geo.befinition(input.value);
+    });
+  }
+}
