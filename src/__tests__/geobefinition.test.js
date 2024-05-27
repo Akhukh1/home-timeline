@@ -92,7 +92,6 @@ test('test vflidate coords "[11.22222, 1.22222]"', () => {
   expect(result).toEqual(true);
 });
 
-
 test('test vflidate coords "1.22222"', () => {
   const form = document.createElement('form');
   const popUpForm = document.body.appendChild(form);
