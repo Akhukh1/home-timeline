@@ -1,4 +1,5 @@
-import ViewMessage from '../js/viewmessage'
+import ViewMessage from '../js/viewmessage';
+import validator from './validators';
 
 export default class GeoBefinition {
   befinition(messeageValue) {
@@ -15,10 +16,9 @@ export default class GeoBefinition {
           const messeage = new ViewMessage();
           messeage.renderMessage(messeageValue, str);
 
-
         },
-        (err) => {
-          this.geoInput(err, messeageValue);
+        () => {
+          this.geoInput(messeageValue);
         }
       );
     }
@@ -26,9 +26,6 @@ export default class GeoBefinition {
   }
 
   geoInput(err, messeageValue) {
-    // console.log('error');
-    // console.log(err);
-
     let div = document.createElement('div');
     const popUp = document.body.appendChild(div);
     popUp.classList.add('popup');
@@ -56,8 +53,7 @@ export default class GeoBefinition {
     const input = document.createElement('input');
     const formInput = popUpForm.appendChild(input);
     formInput.setAttribute('name', 'coords');
-    formInput.setAttribute('pattern', '^[0-9]{2}.[0-9]{5},\ ?(-|[0-9])[0-9].[0-9]{5}');
-    // formInput.setAttribute('pattern', '^\[?[0-9]{2}\.[0-9]{5}\,\ ?(\-|[0-9])[0-9]\.[0-9]{5}\]?$');
+
     formInput.required = true;
     formInput.classList.add('form-input');
 
@@ -77,20 +73,12 @@ export default class GeoBefinition {
     formSubmit.textContent = 'ОК';
     formSubmit.classList.add('submit-btn');
 
-    console.log(Object.keys(ValidityState.prototype))
-
     const errors = {
       coords: {
         valueMissing: 'Введите координаты',
         patternMismatch: 'Введите координаты в нужном формате',
       },
     };
-
-
-
-
-    // Object.keys(ValidityState.prototype)
-
 
     formCancel.addEventListener('click', (e) => {
       e.preventDefault();
@@ -99,41 +87,14 @@ export default class GeoBefinition {
 
     form.addEventListener('submit', (e) => {
       e.preventDefault();
-
-      const elements = form.elements;
-
-      const invalid = [...elements].some((el) => {
-        return Object.keys(ValidityState.prototype).some((key) => {
-          if (!el.name) return;
-          if (key === 'valid') return;
-          if (el.validity[key]) {
-            console.log(errors[el.name][key]);
-            el.setCustomValidity(errors[el.name][key]);
-            return true;
-          }
-        });
-      });
-
-      console.log('invalid')
-      console.log(invalid)
-
+      const invalid = validator(formInput.value, formInput);
       if (invalid) {
-
         form.reportValidity();
+      } else {
+        const messeage = new ViewMessage();
+        messeage.renderMessage(messeageValue, formInput.value);
+        popUp.remove();
       }
-
-    //   if(form.checkValidity()) {
-    //     form.reportValidity();
-    //   } else {
-    //     const messeage = new ViewMessage();
-    //     messeage.renderMessage(messeageValue, formInput.value);
-    //     popUp.remove();
-    //  }
-
-      const messeage = new ViewMessage();
-      messeage.renderMessage(messeageValue, formInput.value);
-      popUp.remove();
-
 
     });
   }

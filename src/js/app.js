@@ -1,4 +1,4 @@
-import Form from '../js/form';
+import Form from './form,js';
 
 const root = document.getElementById('root');
 

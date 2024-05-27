@@ -1,6 +1,6 @@
 import imageMic from '../pic/micriphon.png';
 import imageCam from '../pic/camera.png';
-import GeoBefinition from '../js/geobefinition';
+import GeoBefinition from './geobefinition';
 // import ViewMessage from '../js/viewmessage'
 
 export default class Form {
