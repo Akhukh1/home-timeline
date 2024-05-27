@@ -1,0 +1,137 @@
+#root {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.form-cotauner {
+  display: flex;
+  margin-top: 30px;
+  width: 100%;
+  border: 2px solid grey;
+  align-items: center;
+}
+
+.form {
+  display: flex;
+  width: 90%;
+  margin-left: 5px;
+  margin-right: 10px;
+}
+
+.input-form {
+  width: 100%;
+  resize: none;
+  border: none;
+}
+
+.input-form:focus {
+  outline: none;
+}
+
+.microphone {
+  margin-right: 10px;
+  width: 25px;
+  height: 25px;
+  padding: 2px;
+  border: 1px solid black;
+  border-radius: 25px;
+}
+
+.camera {
+  margin-right: 10px;
+  width: 25px;
+  height: 25px;
+  padding: 2px;
+  border: 1px solid black;
+  border-radius: 25px;
+}
+
+.popup {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0; top: 0; right: 0; bottom: 0;
+}
+
+.popup-input {
+  position: absolute;
+  left: 20%;
+  top: 100px;
+  width: 60%;
+  display: block;
+  background-color: #fff;
+  border: 2px solid grey;
+  border-radius: 15px;
+}
+
+.form-text {
+  margin-top: 15px;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+.form-input {
+  width: 90%;
+  margin-top: 15px;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+.form-buttons {
+  display: flex;
+  margin-bottom: 20px;
+  justify-content: end;
+}
+
+.submit-btn {
+  display: block;
+  font-size: 15px;
+  margin-top: 20px;;
+  padding: 7px 20px;
+  border-radius: 10px;
+  margin-left: 20px;
+  margin-right: 5%;
+}
+
+.sumit-btn:hover {
+  cursor: pointer;
+}
+
+.cancel-btn {
+  display: block;
+  font-size: 15px;
+  margin-top: 20px;;
+  padding: 7px 20px;
+  border-radius: 10px;
+}
+
+.cancel-btn {
+  cursor: pointer;
+}
+
+.mess-container {
+  width: 100%;
+  margin-top: 20px;
+  border: 1px solid gray;
+  border-radius: 10px;
+  padding: 0 15px;
+}
+
+.data {
+  margin-top: 15px;
+  font-size: 12px;
+  text-align: end;
+}
+
+.text {
+  margin-top: 10px;
+}
+
+.coords {
+  margin-top: 15px;
+  font-size: 12px;
+  padding-bottom: 15px;
+}
+
+
